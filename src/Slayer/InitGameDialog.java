@@ -37,6 +37,7 @@ public class InitGameDialog extends JDialog {
 	private int combatLevel = Players.getLocal().getLevel();
 	private int index = 0;
 	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Launch the application.
@@ -117,7 +118,7 @@ public class InitGameDialog extends JDialog {
 		JRadioButton rdbtnUseRange = new JRadioButton("Use range");
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Strength potion", "Super strength potion", "Extreme strength potion"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Strength potion", "Super strength potion", "Extreme strength potion", "None"}));
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -125,7 +126,7 @@ public class InitGameDialog extends JDialog {
 		JLabel lblAmount = new JLabel("Amount:");
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Attack potion", "Super attack potion", "Extreme attack potion"}));
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Attack potion", "Super attack potion", "Extreme attack potion", "None"}));
 		
 		JLabel lblAmount_1 = new JLabel("Amount:");
 		
@@ -133,7 +134,7 @@ public class InitGameDialog extends JDialog {
 		textField_1.setColumns(10);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Defense potion", "Super defense potion", "Extreme defense potion"}));
+		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Defense potion", "Super defense potion", "Extreme defense potion", "None"}));
 		
 		JLabel lblAmount_2 = new JLabel("Amount:");
 		
@@ -149,48 +150,85 @@ public class InitGameDialog extends JDialog {
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
+		
+		JLabel lblSummoningFamiliar = new JLabel("Summoning familiar:");
+		
+		JComboBox comboBox_5 = new JComboBox();
+		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"Void spinner (34)", "Bunyip (68)", "Moss titan (79)", "Ice titan (79)", "Fire titan (79)", "Unicorn stallion (88)", "Pack yak (96)"}));
+		
+		JComboBox comboBox_6 = new JComboBox();
+		comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"Prayer potion", "Super prayer potion"}));
+		
+		JLabel lblAmount_4 = new JLabel("Amount:");
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		
+		JCheckBox chckbxPrayerRenewals = new JCheckBox("Prayer renewal potions?");
+		
+		JCheckBox chckbxQuickPrayers = new JCheckBox("Quick prayers?");
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(rdbtnUseMagic)
-						.addComponent(rdbtnUseRange)
-						.addComponent(rdbtnUseSafespots)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(chckbxPrayerRenewals)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblAmount)
-							.addGap(4)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+							.addComponent(chckbxQuickPrayers))
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblAmount_4)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_4, 0, 0, Short.MAX_VALUE))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(rdbtnUseMagic)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(lblSummoningFamiliar))
+								.addComponent(rdbtnUseRange)
+								.addComponent(rdbtnUseSafespots)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblAmount)
+									.addGap(4)
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblAmount_1)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_1, 0, 0, Short.MAX_VALUE))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(comboBox_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblAmount_2)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_2, 0, 0, Short.MAX_VALUE))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblFood)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblAmount_3)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_3, 0, 0, Short.MAX_VALUE)))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblAmount_1)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_1, 0, 0, Short.MAX_VALUE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(comboBox_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblAmount_2)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_2, 0, 0, Short.MAX_VALUE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblFood)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblAmount_3)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_3, 0, 0, Short.MAX_VALUE)))
-					.addContainerGap(191, Short.MAX_VALUE))
+							.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(65, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(rdbtnUseMagic)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(rdbtnUseMagic)
+						.addComponent(lblSummoningFamiliar)
+						.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(rdbtnUseRange)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -216,7 +254,16 @@ public class InitGameDialog extends JDialog {
 						.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblAmount_3)
 						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(64, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblAmount_4)
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(chckbxPrayerRenewals)
+						.addComponent(chckbxQuickPrayers))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		
