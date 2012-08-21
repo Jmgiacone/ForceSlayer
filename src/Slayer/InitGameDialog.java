@@ -25,6 +25,7 @@ import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Quest;
 import org.powerbot.game.api.methods.tab.Quest$QUEST;
 import org.powerbot.game.api.methods.tab.Skills;
+import javax.swing.JCheckBox;
 
 public class InitGameDialog extends JDialog {
 	private JTextField textField;
@@ -35,6 +36,7 @@ public class InitGameDialog extends JDialog {
 	private int slayerLevel = Skills.getRealLevel(Skills.SLAYER);
 	private int combatLevel = Players.getLocal().getLevel();
 	private int index = 0;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -101,6 +103,10 @@ public class InitGameDialog extends JDialog {
 		comboBox.setBounds(90, 8, 70, 20);
 		panel.add(comboBox);
 		
+		JCheckBox chckbxNpcContactFor = new JCheckBox("NPC contact for new tasks?");
+		chckbxNpcContactFor.setBounds(6, 30, 167, 23);
+		panel.add(chckbxNpcContactFor);
+		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Combat Options", null, panel_1, null);
 		
@@ -133,6 +139,16 @@ public class InitGameDialog extends JDialog {
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
+		
+		JLabel lblFood = new JLabel("Food:");
+		
+		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Trout", "Cod", "Pike", "Salmon", "Tuna", "Bass", "Lobster", "Swordfish", "Monkfish", "Shark", "Cavefish", "Sea turtle", "Manta ray", "Tuna potato", "Rocktail"}));
+		
+		JLabel lblAmount_3 = new JLabel("Amount:");
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -159,7 +175,15 @@ public class InitGameDialog extends JDialog {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblAmount_2)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_2, 0, 0, Short.MAX_VALUE)))
+							.addComponent(textField_2, 0, 0, Short.MAX_VALUE))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addComponent(lblFood)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblAmount_3)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textField_3, 0, 0, Short.MAX_VALUE)))
 					.addContainerGap(191, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
@@ -186,8 +210,61 @@ public class InitGameDialog extends JDialog {
 						.addComponent(comboBox_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblAmount_2)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(84, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblFood)
+						.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblAmount_3)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(64, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("Loot options", null, panel_2, null);
+		
+		JCheckBox chckbxGoldCharms = new JCheckBox("Gold charms");
+		
+		JCheckBox chckbxGreenCharms = new JCheckBox("Green charms");
+		
+		JCheckBox chckbxCrimsonCharms = new JCheckBox("Crimson charms");
+		
+		JCheckBox chckbxBlueCharms = new JCheckBox("Blue charms");
+		
+		JCheckBox chckbxRingOfWealth = new JCheckBox("Ring of wealth drop table");
+		
+		JCheckBox chckbxUsingBonecrusher = new JCheckBox("Using bone crusher?");
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(chckbxGoldCharms)
+						.addComponent(chckbxGreenCharms)
+						.addComponent(chckbxCrimsonCharms)
+						.addComponent(chckbxBlueCharms)
+						.addComponent(chckbxRingOfWealth)
+						.addComponent(chckbxUsingBonecrusher))
+					.addContainerGap(276, Short.MAX_VALUE))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(chckbxGoldCharms)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxGreenCharms)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxCrimsonCharms)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxBlueCharms)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxRingOfWealth)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxUsingBonecrusher)
+					.addContainerGap(89, Short.MAX_VALUE))
+		);
+		panel_2.setLayout(gl_panel_2);
 	}
 }
