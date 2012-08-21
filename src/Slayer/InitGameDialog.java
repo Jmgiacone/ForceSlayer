@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import java.awt.GridLayout;
+import java.util.Arrays;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -19,10 +21,20 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
+import org.powerbot.game.api.methods.interactive.Players;
+import org.powerbot.game.api.methods.tab.Quest;
+import org.powerbot.game.api.methods.tab.Quest$QUEST;
+import org.powerbot.game.api.methods.tab.Skills;
+
 public class InitGameDialog extends JDialog {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private String[] slayerMasters = new String[7];
+	private String[] copy;
+	private int slayerLevel = Skills.getRealLevel(Skills.SLAYER);
+	private int combatLevel = Players.getLocal().getLevel();
+	private int index = 0;
 
 	/**
 	 * Launch the application.
@@ -57,7 +69,35 @@ public class InitGameDialog extends JDialog {
 		panel.add(lblNewLabel);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Turael", "Mazchna", "Vannaka", "Chaeldar", "Sumona", "Duradel", "Kuradal"}));
+		if (combatLevel >= 3) {
+			slayerMasters[index] = "Turael";
+			index++;
+		}
+		if (combatLevel >= 20) {
+			slayerMasters[index] = "Mazchna";
+			index++;
+		}
+		if (combatLevel >= 40) {
+			slayerMasters[index] = "Vannaka";
+			index++;
+		}
+		if (combatLevel >= 70 && Quest.isDoneWithQuest(Quest$QUEST.LOST_CITY)) {
+			slayerMasters[index] = "Chaeldar";
+			index++;
+		}
+		if (combatLevel >= 85 && slayerLevel >= 35 && Quest.isDoneWithQuest(Quest$QUEST.SMOKING_KILLS)) {
+			slayerMasters[index] = "Sumona";
+			index++;
+		}
+		if (combatLevel >= 100 && slayerLevel >= 50 && Quest.isDoneWithQuest(Quest$QUEST.SHILO_VILLAGE)) {
+			slayerMasters[index] = "Duradel";
+			index++;
+		}
+		if (combatLevel >= 110 && slayerLevel >= 75) {
+			slayerMasters[index] = "Kuradal";
+		}
+		copy = Arrays.copyOfRange(slayerMasters, 0, index);
+		comboBox.setModel(new DefaultComboBoxModel(copy));
 		comboBox.setBounds(90, 8, 70, 20);
 		panel.add(comboBox);
 		
