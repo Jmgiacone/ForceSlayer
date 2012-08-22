@@ -25,6 +25,10 @@ import org.powerbot.game.api.methods.tab.Quest$QUEST;
 import org.powerbot.game.api.methods.tab.Skills;
 
 public class SlayerMain extends ActiveScript {
+	
+	//Setting 394 is 0 when you have no assignment, 
+	//and is a number n when you have an assignment (n being the number of NPC's to kill)
+	
 
 	InitGameDialog gui;
 
