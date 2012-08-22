@@ -70,7 +70,7 @@ public class InitGameDialog extends JDialog {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Slayer Master:");
-		lblNewLabel.setBounds(10, 11, 70, 14);
+		lblNewLabel.setBounds(81, 68, 70, 14);
 		panel.add(lblNewLabel);
 		
 		JComboBox slayerMasterBox = new JComboBox();
@@ -103,15 +103,15 @@ public class InitGameDialog extends JDialog {
 		}
 		copy = Arrays.copyOfRange(slayerMasters, 0, index);
 		slayerMasterBox.setModel(new DefaultComboBoxModel(copy));
-		slayerMasterBox.setBounds(90, 8, 70, 20);
+		slayerMasterBox.setBounds(161, 65, 181, 20);
 		panel.add(slayerMasterBox);
 		
 		JCheckBox chckbxNpcContactFor = new JCheckBox("NPC contact for new tasks?");
-		chckbxNpcContactFor.setBounds(6, 30, 167, 23);
+		chckbxNpcContactFor.setBounds(129, 101, 167, 23);
 		panel.add(chckbxNpcContactFor);
 		
 		JCheckBox checkBox = new JCheckBox("Using bone crusher?");
-		checkBox.setBounds(6, 56, 123, 23);
+		checkBox.setBounds(139, 127, 123, 23);
 		panel.add(checkBox);
 		
 		JPanel panel_1 = new JPanel();
