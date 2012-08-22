@@ -26,18 +26,20 @@ import org.powerbot.game.api.methods.tab.Quest;
 import org.powerbot.game.api.methods.tab.Quest$QUEST;
 import org.powerbot.game.api.methods.tab.Skills;
 import javax.swing.JCheckBox;
+import javax.swing.JTextArea;
 
 public class InitGameDialog extends JDialog {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField numberOfStrengthPotions;
+	private JTextField numberOfAttackPotions;
+	private JTextField numberOfDefensePotions;
 	private String[] slayerMasters = new String[7];
 	private String[] copy;
 	private int slayerLevel = Skills.getRealLevel(Skills.SLAYER);
 	private int combatLevel = Players.getLocal().getLevel();
 	private int index = 0;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField amountOfFood;
+	private JTextField amountOfPrayerPotions;
+	private JTextField lootAllAbove;
 
 	/**
 	 * Launch the application.
@@ -71,7 +73,7 @@ public class InitGameDialog extends JDialog {
 		lblNewLabel.setBounds(10, 11, 70, 14);
 		panel.add(lblNewLabel);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox slayerMasterBox = new JComboBox();
 		if (combatLevel >= 3) {
 			slayerMasters[index] = "Turael";
 			index++;
@@ -100,13 +102,17 @@ public class InitGameDialog extends JDialog {
 			slayerMasters[index] = "Kuradal";
 		}
 		copy = Arrays.copyOfRange(slayerMasters, 0, index);
-		comboBox.setModel(new DefaultComboBoxModel(copy));
-		comboBox.setBounds(90, 8, 70, 20);
-		panel.add(comboBox);
+		slayerMasterBox.setModel(new DefaultComboBoxModel(copy));
+		slayerMasterBox.setBounds(90, 8, 70, 20);
+		panel.add(slayerMasterBox);
 		
 		JCheckBox chckbxNpcContactFor = new JCheckBox("NPC contact for new tasks?");
 		chckbxNpcContactFor.setBounds(6, 30, 167, 23);
 		panel.add(chckbxNpcContactFor);
+		
+		JCheckBox checkBox = new JCheckBox("Using bone crusher?");
+		checkBox.setBounds(6, 56, 123, 23);
+		panel.add(checkBox);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Combat Options", null, panel_1, null);
@@ -117,52 +123,52 @@ public class InitGameDialog extends JDialog {
 		
 		JRadioButton rdbtnUseRange = new JRadioButton("Use range");
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Strength potion", "Super strength potion", "Extreme strength potion", "None"}));
+		JComboBox strengthPotionBox = new JComboBox();
+		strengthPotionBox.setModel(new DefaultComboBoxModel(new String[] {"Strength potion", "Super strength potion", "Extreme strength potion", "None"}));
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		numberOfStrengthPotions = new JTextField();
+		numberOfStrengthPotions.setColumns(10);
 		
 		JLabel lblAmount = new JLabel("Amount:");
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Attack potion", "Super attack potion", "Extreme attack potion", "None"}));
+		JComboBox attackPotionBox = new JComboBox();
+		attackPotionBox.setModel(new DefaultComboBoxModel(new String[] {"Attack potion", "Super attack potion", "Extreme attack potion", "None"}));
 		
 		JLabel lblAmount_1 = new JLabel("Amount:");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		numberOfAttackPotions = new JTextField();
+		numberOfAttackPotions.setColumns(10);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Defense potion", "Super defense potion", "Extreme defense potion", "None"}));
+		JComboBox defensePotionBox = new JComboBox();
+		defensePotionBox.setModel(new DefaultComboBoxModel(new String[] {"Defense potion", "Super defense potion", "Extreme defense potion", "None"}));
 		
 		JLabel lblAmount_2 = new JLabel("Amount:");
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		numberOfDefensePotions = new JTextField();
+		numberOfDefensePotions.setColumns(10);
 		
 		JLabel lblFood = new JLabel("Food:");
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Trout", "Cod", "Pike", "Salmon", "Tuna", "Bass", "Lobster", "Swordfish", "Monkfish", "Shark", "Cavefish", "Sea turtle", "Manta ray", "Tuna potato", "Rocktail"}));
+		JComboBox foodBox = new JComboBox();
+		foodBox.setModel(new DefaultComboBoxModel(new String[] {"Trout", "Cod", "Pike", "Salmon", "Tuna", "Bass", "Lobster", "Swordfish", "Monkfish", "Shark", "Cavefish", "Sea turtle", "Manta ray", "Tuna potato", "Rocktail"}));
 		
 		JLabel lblAmount_3 = new JLabel("Amount:");
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		amountOfFood = new JTextField();
+		amountOfFood.setColumns(10);
 		
 		JLabel lblSummoningFamiliar = new JLabel("Summoning familiar:");
 		
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"Void spinner (34)", "Bunyip (68)", "Moss titan (79)", "Ice titan (79)", "Fire titan (79)", "Unicorn stallion (88)", "Pack yak (96)"}));
+		JComboBox summoningFamiliarBox = new JComboBox();
+		summoningFamiliarBox.setModel(new DefaultComboBoxModel(new String[] {"Void spinner (34)", "Bunyip (68)", "Moss titan (79)", "Ice titan (79)", "Fire titan (79)", "Unicorn stallion (88)", "Pack yak (96)"}));
 		
-		JComboBox comboBox_6 = new JComboBox();
-		comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"Prayer potion", "Super prayer potion"}));
+		JComboBox prayerPotionBox = new JComboBox();
+		prayerPotionBox.setModel(new DefaultComboBoxModel(new String[] {"Prayer potion", "Super prayer potion"}));
 		
 		JLabel lblAmount_4 = new JLabel("Amount:");
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
+		amountOfPrayerPotions = new JTextField();
+		amountOfPrayerPotions.setColumns(10);
 		
 		JCheckBox chckbxPrayerRenewals = new JCheckBox("Prayer renewal potions?");
 		
@@ -180,11 +186,11 @@ public class InitGameDialog extends JDialog {
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(prayerPotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblAmount_4)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_4, 0, 0, Short.MAX_VALUE))
+									.addComponent(amountOfPrayerPotions, 0, 0, Short.MAX_VALUE))
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(rdbtnUseMagic)
 									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -192,33 +198,33 @@ public class InitGameDialog extends JDialog {
 								.addComponent(rdbtnUseRange)
 								.addComponent(rdbtnUseSafespots)
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(strengthPotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblAmount)
 									.addGap(4)
-									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+									.addComponent(numberOfStrengthPotions, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(attackPotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblAmount_1)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_1, 0, 0, Short.MAX_VALUE))
+									.addComponent(numberOfAttackPotions, 0, 0, Short.MAX_VALUE))
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(comboBox_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(defensePotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblAmount_2)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_2, 0, 0, Short.MAX_VALUE))
+									.addComponent(numberOfDefensePotions, 0, 0, Short.MAX_VALUE))
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(lblFood)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(foodBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblAmount_3)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_3, 0, 0, Short.MAX_VALUE)))
+									.addComponent(amountOfFood, 0, 0, Short.MAX_VALUE)))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(summoningFamiliarBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(65, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
@@ -228,37 +234,37 @@ public class InitGameDialog extends JDialog {
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(rdbtnUseMagic)
 						.addComponent(lblSummoningFamiliar)
-						.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(summoningFamiliarBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(rdbtnUseRange)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(rdbtnUseSafespots)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(strengthPotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblAmount)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(numberOfStrengthPotions, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(attackPotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblAmount_1)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(numberOfAttackPotions, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(comboBox_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(defensePotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblAmount_2)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(numberOfDefensePotions, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblFood)
-						.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(foodBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblAmount_3)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(amountOfFood, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(prayerPotionBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblAmount_4)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(amountOfPrayerPotions, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(chckbxPrayerRenewals)
@@ -280,26 +286,45 @@ public class InitGameDialog extends JDialog {
 		
 		JCheckBox chckbxRingOfWealth = new JCheckBox("Ring of wealth drop table");
 		
-		JCheckBox chckbxUsingBonecrusher = new JCheckBox("Using bone crusher?");
+		JLabel lblLootAllItems = new JLabel("Loot all items above:");
+		
+		lootAllAbove = new JTextField();
+		lootAllAbove.setColumns(10);
+		
+		JLabel lblGp = new JLabel("gp");
+		
+		JCheckBox chckbxBuryBonesscatterAshes = new JCheckBox("Bury bones/scatter ashes");
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(chckbxGoldCharms)
-						.addComponent(chckbxGreenCharms)
 						.addComponent(chckbxCrimsonCharms)
 						.addComponent(chckbxBlueCharms)
 						.addComponent(chckbxRingOfWealth)
-						.addComponent(chckbxUsingBonecrusher))
-					.addContainerGap(276, Short.MAX_VALUE))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+								.addComponent(chckbxGoldCharms)
+								.addComponent(chckbxGreenCharms))
+							.addGap(18)
+							.addComponent(lblLootAllItems)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lootAllAbove, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblGp))
+						.addComponent(chckbxBuryBonesscatterAshes))
+					.addContainerGap(138, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(chckbxGoldCharms)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(chckbxGoldCharms)
+						.addComponent(lblLootAllItems)
+						.addComponent(lootAllAbove, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblGp))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(chckbxGreenCharms)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -309,9 +334,58 @@ public class InitGameDialog extends JDialog {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(chckbxRingOfWealth)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(chckbxUsingBonecrusher)
-					.addContainerGap(89, Short.MAX_VALUE))
+					.addComponent(chckbxBuryBonesscatterAshes)
+					.addContainerGap(86, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
+		
+		JPanel panel_3 = new JPanel();
+		tabbedPane.addTab("Startup", null, panel_3, null);
+		
+		JLabel lblBeforeStartingThe = new JLabel("Before starting the script, make sure you have all of your settings setup correctly.");
+		
+		JLabel lblForceSlayerIs = new JLabel("Force Slayer is in alpha, therefore you should expect bugs. If you encounter any");
+		
+		JLabel lblBugsPleaseReport = new JLabel("bugs, please report them to 9Ox or Jdog653 via private message on powerbot or");
+		
+		JLabel lblCreateANew = new JLabel("create a new post on the official script topic explaining the bug in detail.");
+		
+		JButton btnVisitOfficialScript = new JButton("Visit official script thread");
+		
+		JButton btnStartScript = new JButton("Start script");
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_3.createSequentialGroup()
+							.addComponent(btnVisitOfficialScript, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnStartScript, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+						.addComponent(lblBeforeStartingThe)
+						.addComponent(lblForceSlayerIs)
+						.addComponent(lblBugsPleaseReport)
+						.addComponent(lblCreateANew))
+					.addContainerGap())
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblBeforeStartingThe)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblForceSlayerIs)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblBugsPleaseReport)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblCreateANew)
+					.addGap(86)
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnVisitOfficialScript, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+						.addComponent(btnStartScript, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		panel_3.setLayout(gl_panel_3);
 	}
 }
