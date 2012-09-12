@@ -35,3 +35,9 @@ local.properties
 *.jar
 *.war
 *.ear
+
+#IntelliJ
+*.xml
+*.name
+.name
+*.iml
